@@ -44,6 +44,8 @@ var gameImg = [
 	{path:'img/bigBox.png',type:'img',name:'bigBox'},//大框
 	{path:'img/error.png',type:'img',name:'error'},//错
 	{path:'img/right.png',type:'img',name:'right'},//对
+	{path:'img/sharing.png',type:'img',name:'sharing'},//分享
+	{path:'img/nosad.png',type:'img',name:'nosad'},//别灰心
 ];
 //全局变量
 var backLayer;//背景层

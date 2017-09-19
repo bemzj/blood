@@ -51,8 +51,9 @@ function loading(progress){
 function gameStart(result){
 	imgList = result;
 	homepage();
+//	shareToFriend();
 //	startQuestion();
-//	popWindow(2);
+//	popWindow(3);
 }
 //首页
 function homepage(){
@@ -166,6 +167,9 @@ function  answerQuestion(number)
 				}else{
 					switch(score)
 					{
+						case 0:
+							popWindow(3);
+							break;
 						case 1:
 						case 2:
 						case 3:
@@ -201,4 +205,17 @@ function  answerQuestion(number)
 			canAnswer = true;
 		}});
 	}});
+}
+//分享页面
+function shareToFriend(){
+	var shareLayer = new LSprite();
+	backLayer.addChild(shareLayer);
+	shareLayer.graphics.drawRect(0,"#000000",[0,0,LGlobal.width,LGlobal.height],true,'rgba(0,0,0,0.5)');
+	//背景
+	var sharing = setBitmap(30,0,'sharing');
+	shareLayer.addChild(sharing);
+	shareLayer.addEventListener(LMouseEvent.MOUSE_DOWN,function(){
+		shareLayer.remove();
+		shareLayer.removeAllChild();
+	});
 }

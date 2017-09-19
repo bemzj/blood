@@ -95,10 +95,8 @@ function popWindow(nid,word)
 	share.x = setXm(share,2)+10;
 	popLayer.addChild(share);
 	bigAndSmall(share,2,2,1.0,0.1,0,true);
-	share.addEventListener(LMouseEvent.MOUSE_DOWN,function(){
-		
-	});
-	if(nid==0||nid==1)
+	share.addEventListener(LMouseEvent.MOUSE_DOWN,shareToFriend);
+	if(nid==0||nid==1||nid==3)
 	{
 		//女人
 		var woman = setBitmap(0,300,'woman');
@@ -138,7 +136,7 @@ function popWindow(nid,word)
 			text3.alpha = 0;
 			show(text3,1.5,1.0,1.0);
 			popLayer.addChild(text3);
-		}else{
+		}else if(nid==1){
 			//恭喜你
 			var volunteer = setBitmap(0,585,'volunteer');
 			volunteer.x = setXm(volunteer,2);
@@ -161,6 +159,24 @@ function popWindow(nid,word)
 			text3.alpha = 0;
 			show(text3,1.5,1.0,1.0);
 			popLayer.addChild(text3);
+		}else{
+			//别灰心
+			var nosad = setBitmap(0,585,'nosad');
+			nosad.x = setXm(nosad,2);
+			popLayer.addChild(nosad);
+			nosad.alpha = 0;
+			show(nosad,2.0,1.0,0);
+			//文字提示
+			var text1 = new setText(0,760,36,"阿哦，全答错了！",'#171e22');
+			text1.x = setXm(text1,2)+20;
+			text1.alpha = 0;
+			popLayer.addChild(text1);
+			show(text1,1.5,1.0,1.0);
+			var text2 = new setText(0,815,36,"再接再厉，你的爱心不止于此！",'#171e22');
+			text2.x = setXm(text2,2)+20;
+			text2.alpha = 0;
+			popLayer.addChild(text2);
+			show(text2,1.5,1.0,1.5);
 		}
 	}else if(nid==2){
 		//背景光
