@@ -269,3 +269,23 @@ function question(x,y,text,tx,ty)
 	self.word = new setmText(tx,ty,30,text,"272626",false,450,40);
 	self.addChild(self.word);
 }
+//飞动的心
+function flyheart(x,y,name)
+{
+	base(this,LSprite,[]);
+	var self = this;
+	self.x = x;
+	self.y = y;
+	self.bitmap = setBitmap(0,0,name);
+	self.addChild(self.bitmap);
+}
+flyheart.prototype.move = function(time,delay=0){
+	var self = this;
+	var xx = self.x;
+	var yy = self.y;
+	LTweenLite.to(self,time,{x:100,y:yy-xx+100,alpha:0,loop:true,delay:delay,onComplete:function(){
+		self.x = xx;
+		self.y = yy;
+		self.alpha = 1;
+	}});
+}

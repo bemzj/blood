@@ -99,22 +99,61 @@ function startQuestion(){
 	//背景
 	var questionBkg = new LBitmap(new LBitmapData(imgList['questionBkg']));
 	backLayer.addChild(questionBkg);
-
-	answerQuestion(0);
-}
-function  answerQuestion(number)
-{
 	//答题层
 	qLayer = new LSprite();
 	backLayer.addChild(qLayer);
+	answerQuestion(0);
+	//飞心层
+	var flyLayer = new LSprite();
+	backLayer.addChild(flyLayer);
+	//飞心组
+	var fly = new Array();
+	fly[0] = new flyheart(760,1100,'flyh2');
+	flyLayer.addChild(fly[0]);
+	fly[0].move(7);
+	
+	fly[1] = new flyheart(760,800,'flyh2');
+	flyLayer.addChild(fly[1]);
+	fly[1].move(7);
+	
+	fly[2] = new flyheart(400,1400,'flyh2');
+	flyLayer.addChild(fly[2]);
+	fly[2].move(4);
+	
+	fly[3] = new flyheart(600,1400,'flyh2');
+	flyLayer.addChild(fly[3]);
+	fly[3].move(5);
+	
+	fly[4] = new flyheart(760,600,'flyh2');
+	flyLayer.addChild(fly[4]);
+	fly[4].move(8);
+	
+	fly[5] = new flyheart(700,1400,'flyh2');
+	flyLayer.addChild(fly[5]);
+	fly[5].move(7);
+	
+	fly[6] = new flyheart(760,700,'flyh2');
+	flyLayer.addChild(fly[6]);
+	fly[6].move(6,3);
+	
+	fly[7] = new flyheart(760,900,'flyh2');
+	flyLayer.addChild(fly[7]);
+	fly[7].move(7,3);
+	
+	fly[8] = new flyheart(760,300,'flyh2');
+	flyLayer.addChild(fly[8]);
+	fly[8].move(8,3);
+}
+function  answerQuestion(number)
+{
 	//题号
-	var qNumber = setBitmap(60,156,'number'+(number+1));
+	var qNumber = setBitmap(60,136,'number'+(number+1));
 	qLayer.addChild(qNumber);
 	//题目
-	var questionTitle = new question(146,146,qt[number],qx[number],qy[number]);
+	var questionTitle = new question(146,126,qt[number],qx[number],qy[number]);
 	qLayer.addChild(questionTitle);
 	//图片显示
-	var showpic = setBitmap(0,showy[number],'show'+(number+1));
+	var showpic = setBitmap(0,showy[number]-10,'show'+(number+1));
 	showpic.x = setXm(showpic,2)+showx[number];
 	qLayer.addChild(showpic);
 	//可以答题
@@ -161,7 +200,7 @@ function  answerQuestion(number)
 					LTweenLite.to(answeres[1],0.5,{x:answeres[1].x-LGlobal.width,delay:1.3});
 					LTweenLite.to(answeres[2],0.5,{x:answeres[2].x-LGlobal.width,delay:1.4,onComplete:function(){
 					     qLayer.removeAllChild();
-					     qLayer.remove();
+					     qLayer.die();
 					     answerQuestion(++number);
 					}});
 				}else{

@@ -46,6 +46,7 @@ var gameImg = [
 	{path:'img/right.png',type:'img',name:'right'},//对
 	{path:'img/sharing.png',type:'img',name:'sharing'},//分享
 	{path:'img/nosad.png',type:'img',name:'nosad'},//别灰心
+	{path:'img/flyh2.png',type:'img',name:'flyh2'},//飞心2
 ];
 //全局变量
 var backLayer;//背景层
