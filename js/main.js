@@ -163,7 +163,7 @@ function  answerQuestion(number)
 	for(var i=0;i<3;i++)
 	{
 		var ranswer = false;
-		if(rs[number] == i )
+		if(rs[number] == i)
 		{
 			ranswer = true;
 		}
@@ -186,45 +186,122 @@ function  answerQuestion(number)
 			{
 				canAnswer = false;
 				this.sp.result.visible =true;
+				this.sp.sound.play();
 				if(this.sp.q==true)
 				{
 					score+=1;
-				}
-				this.sp.sound.play();
-				if(number!=7)
-				{
-					LTweenLite.to(qNumber,0.5,{x:qNumber.x-LGlobal.width,delay:1.0});
-					LTweenLite.to(questionTitle,0.5,{x:questionTitle.x-LGlobal.width,delay:1.0});
-					LTweenLite.to(showpic,0.5,{x:showpic.x-LGlobal.width,delay:1.1});
-					LTweenLite.to(answeres[0],0.5,{x:answeres[0].x-LGlobal.width,delay:1.2});
-					LTweenLite.to(answeres[1],0.5,{x:answeres[1].x-LGlobal.width,delay:1.3});
-					LTweenLite.to(answeres[2],0.5,{x:answeres[2].x-LGlobal.width,delay:1.4,onComplete:function(){
-					     qLayer.removeAllChild();
-					     qLayer.die();
-					     answerQuestion(++number);
-					}});
-				}else{
-					switch(score)
-					{
-						case 0:
-							popWindow(3);
-							break;
-						case 1:
-						case 2:
-						case 3:
-							popWindow(0,scoreNumber[score]);
-							break;
-						case 4:
-						case 5:
-						case 6:
-						case 7:
-							popWindow(1,scoreNumber[score]);
-							break;
-						case 8:
-							popWindow(2);
-							break;
+					if(number != 7) {
+						LTweenLite.to(qNumber, 0.5, {
+							x: qNumber.x - LGlobal.width,
+							delay: 1.0
+						});
+						LTweenLite.to(questionTitle, 0.5, {
+							x: questionTitle.x - LGlobal.width,
+							delay: 1.0
+						});
+						LTweenLite.to(showpic, 0.5, {
+							x: showpic.x - LGlobal.width,
+							delay: 1.1
+						});
+						LTweenLite.to(answeres[0], 0.5, {
+							x: answeres[0].x - LGlobal.width,
+							delay: 1.2
+						});
+						LTweenLite.to(answeres[1], 0.5, {
+							x: answeres[1].x - LGlobal.width,
+							delay: 1.3
+						});
+						LTweenLite.to(answeres[2], 0.5, {
+							x: answeres[2].x - LGlobal.width,
+							delay: 1.4,
+							onComplete: function() {
+								qLayer.removeAllChild();
+								qLayer.die();
+								answerQuestion(++number);
+							}
+						});
+					} else {
+						switch(score) {
+							case 0:
+								popWindow(3);
+								break;
+							case 1:
+							case 2:
+							case 3:
+								popWindow(0, scoreNumber[score]);
+								break;
+							case 4:
+							case 5:
+							case 6:
+							case 7:
+								popWindow(1, scoreNumber[score]);
+								break;
+							case 8:
+								popWindow(2);
+								break;
+						}
 					}
+				}else{
+					setTimeout(function(){
+						answeres[rs[number]].result.visible = true;
+					},1000);					
+					setTimeout(function(){
+						if(number != 7) {
+							LTweenLite.to(qNumber, 0.5, {
+								x: qNumber.x - LGlobal.width,
+								delay: 1.0
+							});
+							LTweenLite.to(questionTitle, 0.5, {
+								x: questionTitle.x - LGlobal.width,
+								delay: 1.0
+							});
+							LTweenLite.to(showpic, 0.5, {
+								x: showpic.x - LGlobal.width,
+								delay: 1.1
+							});
+							LTweenLite.to(answeres[0], 0.5, {
+								x: answeres[0].x - LGlobal.width,
+								delay: 1.2
+							});
+							LTweenLite.to(answeres[1], 0.5, {
+								x: answeres[1].x - LGlobal.width,
+								delay: 1.3
+							});
+							LTweenLite.to(answeres[2], 0.5, {
+								x: answeres[2].x - LGlobal.width,
+								delay: 1.4,
+								onComplete: function() {
+									qLayer.removeAllChild();
+									qLayer.die();
+									answerQuestion(++number);
+								}
+							});
+						} else {
+							switch(score) {
+								case 0:
+									popWindow(3);
+									break;
+								case 1:
+								case 2:
+								case 3:
+									popWindow(0, scoreNumber[score]);
+									break;
+								case 4:
+								case 5:
+								case 6:
+								case 7:
+									popWindow(1, scoreNumber[score]);
+									break;
+								case 8:
+									popWindow(2);
+									break;
+							}
+						}
+					},1500);
+						
 				}
+				
+				
 				
 			}	
 		});
